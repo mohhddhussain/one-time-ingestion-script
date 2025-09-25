@@ -1,7 +1,7 @@
 import psycopg2
 import os
 
-DB_HOST = "localhost"   # service name, not localhost
+DB_HOST = "localhost"   
 DB_PORT = 5433
 DB_USER = "postgres"
 DB_PASS = "postgres"
