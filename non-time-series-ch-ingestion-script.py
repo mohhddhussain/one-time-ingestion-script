@@ -31,7 +31,7 @@ def fetch_sample_rows(table, limit=500):
     return ch_client.query(f"SELECT * FROM {table} LIMIT {limit}").result_rows
 
 def backfill_table(table, monthly_rows, time_col):
-    print(f"🚀 Backfilling {table}")
+    print(f"Backfilling {table}")
     current_rows = get_existing_row_count(table)
     target_rows = monthly_rows * 3  
     rows_needed = target_rows - current_rows
@@ -71,7 +71,7 @@ def backfill_table(table, monthly_rows, time_col):
         # Insert into ClickHouse
         ch_client.insert(table, backfilled_rows, column_names=col_names)
         inserted += len(backfilled_rows)
-        print(f"   ⏳ Inserted {inserted}/{rows_needed} rows", end="\r")
+        print(f"Inserted {inserted}/{rows_needed} rows", end="\r")
 
     print(f"\nFinished backfilling {table}")
 
