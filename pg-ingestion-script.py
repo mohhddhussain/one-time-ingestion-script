@@ -45,15 +45,15 @@ def load_csv(db, schema, table, csv_file):
         conn.commit()
         cur.close()
         conn.close()
-        print(f"✅ Loaded {csv_file} into {db}.{schema}.{table}")
+        print(f"Loaded {csv_file} into {db}.{schema}.{table}")
 
     except Exception as e:
-        print(f"❌ Failed loading {csv_file} into {db}.{schema}.{table}")
+        print(f"Failed loading {csv_file} into {db}.{schema}.{table}")
         print(f"   Error: {e}")
 
 if __name__ == "__main__":
     for db, schema, table, csv_file in MAPPINGS:
         if not os.path.exists(csv_file):
-            print(f"⚠️ File not found: {csv_file}, skipping...")
+            print(f"File not found: {csv_file}, skipping...")
             continue
         load_csv(db, schema, table, csv_file)
