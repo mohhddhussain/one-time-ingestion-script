@@ -33,12 +33,12 @@ def fetch_sample_rows(table, limit=500):
 def backfill_table(table, monthly_rows, time_col):
     print(f"🚀 Backfilling {table}")
     current_rows = get_existing_row_count(table)
-    target_rows = monthly_rows * 3  # 90 days worth
+    target_rows = monthly_rows * 3  
     rows_needed = target_rows - current_rows
     print(f"   ➡️  Need {rows_needed} rows")
 
     if rows_needed <= 0:
-        print(f"   ✅ Already at or above target rows")
+        print(f"Already at or above target rows")
         return
 
     # Fetch schema
@@ -73,7 +73,7 @@ def backfill_table(table, monthly_rows, time_col):
         inserted += len(backfilled_rows)
         print(f"   ⏳ Inserted {inserted}/{rows_needed} rows", end="\r")
 
-    print(f"\n   ✅ Finished backfilling {table}")
+    print(f"\nFinished backfilling {table}")
 
 # Backfill all tables
 for table, info in tables_info.items():
